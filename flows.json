@@ -1,1 +1,721 @@
-[]
+[
+    {
+        "id": "86e24b38f1295d9e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b88becc9d6368c67",
+        "type": "ui-base",
+        "name": "ui_template.label.myDashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "eaeb5e9115596440",
+        "type": "ui-theme",
+        "name": "ui_template.themes.defaultTheme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "384029e4783c1402",
+        "type": "ui-page",
+        "name": "App Clima",
+        "ui": "b88becc9d6368c67",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "eaeb5e9115596440",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "7d0226fdc4d963bd",
+        "type": "ui-group",
+        "name": "Información",
+        "page": "384029e4783c1402",
+        "width": 11,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "6ed4a2fd14e7b1d7",
+        "type": "ui-text-input",
+        "z": "86e24b38f1295d9e",
+        "group": "7d0226fdc4d963bd",
+        "name": "ubicación",
+        "label": "text",
+        "order": 1,
+        "width": 5,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "ad2f0bfb7e55b0f0",
+                "71c69f7b198fe53a",
+                "76ee3f5202af39a4"
+            ]
+        ]
+    },
+    {
+        "id": "ad2f0bfb7e55b0f0",
+        "type": "template",
+        "z": "86e24b38f1295d9e",
+        "name": "armar URL geocoding",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "http://api.openweathermap.org/geo/1.0/direct?q={{payload}}&appid=029e2971fd993ff3081a6fdf47ad6f19",
+        "output": "str",
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "cc6e93fe4b5c4520",
+                "35eb1d2a0be51157"
+            ]
+        ]
+    },
+    {
+        "id": "71c69f7b198fe53a",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cc6e93fe4b5c4520",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "35eb1d2a0be51157",
+        "type": "http request",
+        "z": "86e24b38f1295d9e",
+        "name": "geocoding API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 660,
+        "y": 180,
+        "wires": [
+            [
+                "9d45e8d81a2af863",
+                "e2a5c6e162848ce3"
+            ]
+        ]
+    },
+    {
+        "id": "9d45e8d81a2af863",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e2a5c6e162848ce3",
+        "type": "change",
+        "z": "86e24b38f1295d9e",
+        "name": "extraer datos",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat",
+                "pt": "msg",
+                "to": "payload[0].lat",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "lon",
+                "pt": "msg",
+                "to": "payload[0].lon",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "ciudad",
+                "pt": "msg",
+                "to": "payload[0].name",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "provincia",
+                "pt": "msg",
+                "to": "payload[0].state",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pais",
+                "pt": "msg",
+                "to": "payload[0].country",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 360,
+        "wires": [
+            [
+                "0883099095bf5833",
+                "9e4e8cfef0f3225c"
+            ]
+        ]
+    },
+    {
+        "id": "0883099095bf5833",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9e4e8cfef0f3225c",
+        "type": "template",
+        "z": "86e24b38f1295d9e",
+        "name": "armar URL current weather",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid=029e2971fd993ff3081a6fdf47ad6f19&units=metric&lang=es",
+        "output": "str",
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "bc6ca8c9e2a65ec3",
+                "bfe058a55de68436"
+            ]
+        ]
+    },
+    {
+        "id": "bc6ca8c9e2a65ec3",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bfe058a55de68436",
+        "type": "http request",
+        "z": "86e24b38f1295d9e",
+        "name": "current weather API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 710,
+        "y": 360,
+        "wires": [
+            [
+                "ef904e93705c09ff",
+                "c5cb12f397a1394a"
+            ]
+        ]
+    },
+    {
+        "id": "ef904e93705c09ff",
+        "type": "debug",
+        "z": "86e24b38f1295d9e",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "02ad264c2014bee2",
+        "type": "ui-text",
+        "z": "86e24b38f1295d9e",
+        "group": "7d0226fdc4d963bd",
+        "order": 2,
+        "width": 5,
+        "height": 0,
+        "name": "mostrar ubicacion",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "Helvetica, sans-serif",
+        "fontSize": "19",
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 770,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "78776078f0eafddd",
+        "type": "template",
+        "z": "86e24b38f1295d9e",
+        "name": "acomodar ubicacion",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{ciudad}}, {{provincia}}, {{pais}}",
+        "output": "str",
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "02ad264c2014bee2"
+            ]
+        ]
+    },
+    {
+        "id": "c5cb12f397a1394a",
+        "type": "link out",
+        "z": "86e24b38f1295d9e",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "2b7453e3eb993b97"
+        ],
+        "x": 865,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2b7453e3eb993b97",
+        "type": "link in",
+        "z": "86e24b38f1295d9e",
+        "name": "link in 1",
+        "links": [
+            "c5cb12f397a1394a"
+        ],
+        "x": 255,
+        "y": 600,
+        "wires": [
+            [
+                "78776078f0eafddd",
+                "78e586eeef41f6c0",
+                "6563ad808429576f",
+                "999f14a420822895"
+            ]
+        ]
+    },
+    {
+        "id": "32a67e465c2d9870",
+        "type": "ui-gauge",
+        "z": "86e24b38f1295d9e",
+        "name": "temperatura",
+        "group": "7d0226fdc4d963bd",
+        "order": 3,
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "units": "ºC",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-10",
+                "color": "#0400ff"
+            },
+            {
+                "from": "0",
+                "color": "#4c83f0"
+            },
+            {
+                "from": "15",
+                "color": "#00ff11"
+            },
+            {
+                "from": "25",
+                "color": "#eeff00"
+            },
+            {
+                "from": "35",
+                "color": "#ff0000"
+            }
+        ],
+        "min": "-10",
+        "max": "40",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 750,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "78e586eeef41f6c0",
+        "type": "function",
+        "z": "86e24b38f1295d9e",
+        "name": "acomodar temp",
+        "func": "msg.payload = msg.payload.main.temp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 580,
+        "wires": [
+            [
+                "32a67e465c2d9870",
+                "955f521ed30aa9e7"
+            ]
+        ]
+    },
+    {
+        "id": "6563ad808429576f",
+        "type": "template",
+        "z": "86e24b38f1295d9e",
+        "name": "acomodar ST",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "ST {{payload.main.feels_like}} ºC",
+        "output": "str",
+        "x": 520,
+        "y": 660,
+        "wires": [
+            [
+                "74758c9223681d6d"
+            ]
+        ]
+    },
+    {
+        "id": "74758c9223681d6d",
+        "type": "ui-text",
+        "z": "86e24b38f1295d9e",
+        "group": "7d0226fdc4d963bd",
+        "order": 5,
+        "width": 3,
+        "height": 0,
+        "name": "ST",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "Helvetica, sans-serif",
+        "fontSize": "22",
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 730,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "64d5493e183f40ab",
+        "type": "ui-text",
+        "z": "86e24b38f1295d9e",
+        "group": "7d0226fdc4d963bd",
+        "order": 6,
+        "width": 3,
+        "height": 0,
+        "name": "humedad",
+        "label": "Humedad: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "Helvetica, sans-serif",
+        "fontSize": "19",
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "x": 740,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "999f14a420822895",
+        "type": "function",
+        "z": "86e24b38f1295d9e",
+        "name": "acomodar humedad",
+        "func": "msg.payload = msg.payload.main.humidity + \" %\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 720,
+        "wires": [
+            [
+                "64d5493e183f40ab"
+            ]
+        ]
+    },
+    {
+        "id": "955f521ed30aa9e7",
+        "type": "ui-chart",
+        "z": "86e24b38f1295d9e",
+        "group": "7d0226fdc4d963bd",
+        "name": "grafica temp",
+        "label": "",
+        "order": 4,
+        "chartType": "line",
+        "category": "",
+        "categoryType": "none",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "linear",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 8,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 750,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27193600190a9137",
+        "type": "inject",
+        "z": "86e24b38f1295d9e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ubicacion",
+        "payloadType": "flow",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "ad2f0bfb7e55b0f0"
+            ]
+        ]
+    },
+    {
+        "id": "76ee3f5202af39a4",
+        "type": "change",
+        "z": "86e24b38f1295d9e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ubicacion",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    }
+]
