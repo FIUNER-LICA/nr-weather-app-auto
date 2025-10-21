@@ -140,7 +140,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "http://api.openweathermap.org/geo/1.0/direct?q={{payload}}&appid=029e2971fd993ff3081a6fdf47ad6f19",
+        "template": "http://api.openweathermap.org/geo/1.0/direct?q={{payload}}&appid=API_key",
         "output": "str",
         "x": 420,
         "y": 180,
@@ -309,7 +309,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid=029e2971fd993ff3081a6fdf47ad6f19&units=metric&lang=es",
+        "template": "https://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&appid=API_key&units=metric&lang=es",
         "output": "str",
         "x": 470,
         "y": 360,
@@ -717,5 +717,15 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "d2946f04bde0414b",
+        "type": "comment",
+        "z": "86e24b38f1295d9e",
+        "name": "API_key",
+        "info": "En los nodos <armar URL geocoding> y <armar URL current weather>,\nsustituir API_key en  appid por su propia API_KEY obtenida de OpenWeatherMap",
+        "x": 100,
+        "y": 40,
+        "wires": []
     }
 ]
